@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-module SplashHelper
+module SplashHelper # rubocop:todo Style/Documentation
 end

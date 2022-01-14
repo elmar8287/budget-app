@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-module EntitiesHelper
+module EntitiesHelper # rubocop:todo Style/Documentation
 end

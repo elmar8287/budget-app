@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DeviseCreateViews < ActiveRecord::Migration[7.0]
+class DeviseCreateViews < ActiveRecord::Migration[7.0] # rubocop:todo Style/Documentation
   def change
     create_table :views do |t|
       ## Database authenticatable
