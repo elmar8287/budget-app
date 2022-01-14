@@ -17,7 +17,7 @@
 
 ## Project milestones:
 
-> Day 1
+> Day 1 
 - Set up the repository and tools.
 - Create your models according to the ERD diagram. Don't forget about validations and tests.
 - Implement the authentication and authorization.
