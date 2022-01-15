@@ -1,2 +1,68 @@
-<h1>Groups#index</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
+<!-- display group name -->
+<section>
+  <div>
+    <div>
+      <%= image_tag avatar_url(current_user), :class => "avatar" %>
+      <div>
+        <p>Welcome!</p>
+        <p><%= current_user.name %></p>
+      </div>
+    </div>
+    <!-- render modal -->
+    <%= render 'modal' %> <%= render 'logout' %>
+    <!-- link to devise user edit -->
+    <%= link_to edit_user_registration_path do %>
+    <ion-icon name="settings"></ion-icon>
+    <% end %>
+  </div>
+  <div>
+    <div>
+      <div>
+        <p>Total Expenses</p>
+        <p>$ <%= current_user.total_expenses.to_s.gsub(/\d(?=(\d{3})+\.)/, '\&,') %>.00</p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <ion-icon name="arrow-down-outline"></ion-icon>
+        <div>
+          <p>Most</p>
+          <p>$ <% if current_user.entities.present? %> <%= current_user.entities.select { |entity| entity.amount == current_user.entities.max_by(&:amount).amount }.first.amount %>.00 <% else %> 0.00 <% end %></p>
+        </div>
+      </div>
+      <div>
+        <ion-icon name="arrow-up-outline"></ion-icon>
+        <div>
+          <p>Last</p>
+          <p><% if current_user.entities.present? %> $ <%= current_user.entities.select { |entity| entity.amount == current_user.entities.min_by(&:amount).amount }.first.amount %><% else %> $ 0<% end %>.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <p>Transactions</p>
+      <p>View All</p>
+    </div>
+    <ul>
+      <% @groups.each do |group| %>
+      <li>
+        <div>
+          <ion-icon name="<%= group.icon %>"></ion-icon>
+          <p><%= link_to group.name.split(" ").map(&:capitalize).join(" "), group_entities_path(group) %></p>
+        </div>
+        <div>
+          <p>-$<%= group.total_amount %></p>
+          <p><%= group.created_at.strftime("%a") %></p>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <ion-icon name="grid"data-toggle="modal" data-target="#LogOut"></ion-icon>
+    <%= link_to new_group_path do %>
+    <ion-icon name="add-outline">Add</ion-icon>
+    <% end %>
+    <ion-icon name="alert-circle" data-toggle="modal" data-target="#exampleModal"></ion-icon>
+  </div>
