@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   devise_for :views
   devise_for :users
-  root 'splash#index'
-  resources :splash
+  root to:'splash#index'
+  root to: 'user#show'
+  resources :users, only: [:show]
 end
