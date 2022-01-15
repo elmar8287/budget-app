@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
-class EntitiesController < ApplicationController # rubocop:todo Style/Documentation
+class EntitiesController < ApplicationController
   def index; end
 end
