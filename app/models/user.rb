@@ -7,7 +7,3 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
 end
-
-# Service to download ftp files from the server
-class FtpService
-end
